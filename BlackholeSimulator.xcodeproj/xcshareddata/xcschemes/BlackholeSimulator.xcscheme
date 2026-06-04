@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme LastUpgradeCheck = "2610" Version = "1.9">
+   <LaunchAction buildConfiguration = "Debug" selectedTarget = "BlackholeSimulator_target">
+      <MacroExpansion chosenLocals = ""></MacroExpansion>
+   </LaunchAction>
+   <BuildAction buildConfiguration = "Debug" parallelizeBuildables = "1">
+      <BuildActionEntries>
+         <BuildActionEntry buildReference = "BlackholeSimulator_target" runForBuild = "1">
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction buildConfiguration = "Debug" selectedTarget = "BlackholeSimulator_target">
+   </TestAction>
+</Scheme>

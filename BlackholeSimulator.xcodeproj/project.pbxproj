@@ -1,0 +1,233 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1B2C3D4E5F61001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F62011; };
+		A1B2C3D4E5F61002 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F62012; };
+		A1B2C3D4E5F61003 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F62013; };
+		A1B2C3D4E5F61004 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F62014; };
+		A1B2C3D4E5F61005 /* SimulationParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F62015; };
+		A1B2C3D4E5F61006 /* BlackholeSimulator.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F62016; };
+		A1B2C3D4E5F61007 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F62017; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A1B2C3D4E5F62101 /* BlackholeSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlackholeSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B2C3D4E5F62011 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F62012 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F62013 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F62014 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F62015 /* SimulationParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationParams.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F62016 /* BlackholeSimulator.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BlackholeSimulator.metal; sourceTree = "<group>"; };
+		A1B2C3D4E5F62017 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		A1B2C3D4E5F62201 /* BlackholeSimulator */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F62202 /* Sources */,
+				A1B2C3D4E5F62203 /* Shaders */,
+				A1B2C3D4E5F62204 /* Resources */,
+				A1B2C3D4E5F62205 /* Frameworks */,
+				A1B2C3D4E5F62206 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F62202 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F62011,
+				A1B2C3D4E5F62012,
+				A1B2C3D4E5F62013,
+				A1B2C3D4E5F62014,
+				A1B2C3D4E5F62015,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F62203 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F62016,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F62204 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F62017,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F62205 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F62206 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F62101,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1B2C3D4E5F62301 /* BlackholeSimulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B2C3D4E5F62401;
+			buildPhases = (
+				A1B2C3D4E5F62501,
+				A1B2C3D4E5F62502,
+				A1B2C3D4E5F62503,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BlackholeSimulator;
+			productName = BlackholeSimulator;
+			productReference = A1B2C3D4E5F62101;
+			productTypeIdentifier = com.apple.product-type.application;
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1B2C3D4E5F62601 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					A1B2C3D4E5F62301 = {LastSwiftMigration = 1600; };
+				};
+			};
+			buildConfigurationList = A1B2C3D4E5F62602;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			mainGroup = A1B2C3D4E5F62201;
+			productRefGroup = A1B2C3D4E5F62206;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1B2C3D4E5F62301,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1B2C3D4E5F62501 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D4E5F61001,
+				A1B2C3D4E5F61002,
+				A1B2C3D4E5F61003,
+				A1B2C3D4E5F61004,
+				A1B2C3D4E5F61005,
+				A1B2C3D4E5F61006,
+			);
+			fileList = "";
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1B2C3D4E5F62502 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			fileList = "";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1B2C3D4E5F62503 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D4E5F61007,
+			);
+			fileList = "";
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin XCConfigurationList section */
+		A1B2C3D4E5F62401 /* Build configuration list for PBXNativeTarget */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D4E5F62410 /* Debug */,
+				A1B2C3D4E5F62411 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B2C3D4E5F62602 /* Build configuration list for PBXProject */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D4E5F62410 /* Debug */,
+				A1B2C3D4E5F62411 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B2C3D4E5F62410 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				MACOSX_BUNDLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blackholesimulator.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "(1)";
+			};
+			name = Debug;
+		};
+		A1B2C3D4E5F62411 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				MACOSX_BUNDLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.blackholesimulator.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "(1)";
+			};
+			name = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = A1B2C3D4E5F62601 /* Project object */;
+}

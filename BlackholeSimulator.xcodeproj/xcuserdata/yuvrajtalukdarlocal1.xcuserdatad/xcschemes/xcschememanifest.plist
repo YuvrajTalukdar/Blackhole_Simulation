@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<Key>RelativePath</Key>
+		<string>BlackholeSimulator.xcodeproj</string>
+		<Dict>
+			<Key>BuildableReference</Key>
+			<dict>
+				<Key>BuildableIdentifier</Key>
+				<string>primary</string>
+				<Key>BlueprintIdentifier</Key>
+				<string>A1B2C3D4E5F62301</string>
+				<Key>BlueprintName</Key>
+				<string>BlackholeSimulator</string>
+				<Key>ReferencedContainer</Key>
+				<string>container:BlackholeSimulator.xcodeproj</string>
+			</dict>
+			<Key>BuildableContained</Key>
+			<integer>0</integer>
+			<Key>SharedNodeName</Key>
+			<string>A1B2C3D4E5F62301</string>
+		</Dict>
+		<key>SharedNodeName</key>
+		<string>BlackholeSimulator</string>
+		<key>SchemeLocation</key>
+		<string>A1B2C3D4E5F62301</string>
+		<key>ShouldLaunchAutomatically</key>
+		<integer>1</integer>
+		<key>ShouldStoreAutomatically</key>
+		<integer>1</integer>
+		<key>TargetSelectorOrder</key>
+		<array/>
+		<key>WorkflowName</key>
+		<string>Launch</string>
+	</dict>
+</array>
+</plist>
