@@ -2,6 +2,12 @@
 
 A real-time general-relativistic black hole renderer built entirely on Apple Metal Compute Shaders and Swift. Simulates gravitational lensing, a glowing accretion disk with Doppler beaming/gravitational redshift, starfield distortion, and post-processing bloom — all running at 60fps on Apple Silicon.
 
+## Preview
+
+| | |
+|---|---|
+| ![Black hole preview 1](./images/img1.png) | ![Black hole preview 2](./images/img2.png) |
+
 ## Screenshots
 
 When the app launches successfully you should see:
@@ -23,7 +29,6 @@ When the app launches successfully you should see:
 ### Build
 
 ```bash
-cd ~/computer/local_ai/aqua/qwen36/blackhole2/BlackholeSimulator
 ./direct_build.sh Debug 2>&1 | tail -5
 ```
 
