@@ -2,12 +2,6 @@
 
 A real-time general-relativistic black hole renderer built entirely on Apple Metal Compute Shaders and Swift. Simulates gravitational lensing, a glowing accretion disk with Doppler beaming/gravitational redshift, starfield distortion, and post-processing bloom — all running at 60fps on Apple Silicon.
 
-## Preview
-
-| | |
-|---|---|
-| ![Black hole preview 1](./images/img1.png) | ![Black hole preview 2](./images/img2.png) |
-
 ## Screenshots
 
 When the app launches successfully you should see:
@@ -26,23 +20,42 @@ When the app launches successfully you should see:
 
 ## How to Build and Run
 
+### Prerequisites
+
+- macOS 13 or later, Apple Silicon (M1 or later)
+- Xcode command line tools (`xcode-select --install`) — provides `swiftc`, `metal`, and `metallib`
+
 ### Build
 
 ```bash
-./direct_build.sh Debug 2>&1 | tail -5
+cd ~/computer/local_ai/aqua/qwen36/BlackholeSimulationV1
+./direct_build.sh Debug        # or: ./direct_build.sh Release
 ```
 
-This produces an app bundle at:
+The script compiles the Metal shaders into `Shaders.metallib`, compiles the Swift sources, and assembles the app bundle at:
+
 ```
 build/BlackholeSimulator.app
 ```
 
+The shader library is precompiled and embedded in the bundle, so **rebuild after any `.metal` change**.
+
 ### Run
 
+The app loads its shaders from its own bundle, so it can be launched from any working directory:
+
 ```bash
-killall BlackholeSimulator 2>/dev/null; sleep 1
-./build/BlackholeSimulator.app/Contents/MacOS/BlackholeSimulator &
+killall BlackholeSimulator 2>/dev/null; sleep 1   # kill any stale instance
+./build/BlackholeSimulator.app/Contents/MacOS/BlackholeSimulator &   # from the project root
 ```
+
+or simply:
+
+```bash
+open build/BlackholeSimulator.app
+```
+
+The window title shows the live FPS. To quit, press **Q** / **Escape** in the app, or run `killall BlackholeSimulator`.
 
 ## Controls
 

@@ -62,16 +62,41 @@ class BlackholeRenderer: NSObject, MTKViewDelegate {
         return device.makeTexture(descriptor: descriptor)
     }
 
+    // Locate Shaders.metallib. `Bundle.url(forResource:)` does not search
+    // subfolders and the library ships in Resources/Shaders/, so resolve it
+    // explicitly — independent of the current working directory.
+    private static func shadersLibraryURL() -> URL {
+        let fm = FileManager.default
+        if let resPath = Bundle.main.resourcePath {
+            let base = URL(fileURLWithPath: resPath)
+            for candidate in [
+                base.appendingPathComponent("Shaders.metallib"),
+                base.appendingPathComponent("Shaders/Shaders.metallib"),
+            ] {
+                if fm.fileExists(atPath: candidate.path) { return candidate }
+            }
+        }
+        let devPath = "build/BlackholeSimulator.app/Contents/Resources/Shaders/Shaders.metallib"
+        if fm.fileExists(atPath: devPath) {
+            return URL(fileURLWithPath: devPath)
+        }
+        fatalError("Shaders.metallib not found. Rebuild with ./direct_build.sh "
+            + "(expected in the app bundle's Resources or at \(devPath) relative to the working directory).")
+    }
+
     // === Init ===
     init(mtkView: MTKView) {
         self.mtkView = mtkView
         self.device = MTLCreateSystemDefaultDevice()!
         self.commandQueue = device.makeCommandQueue()!
 
-        // Load shaders from Metal default library (auto-compiles .metal files in Resources)
-        let libraryURL = Bundle.main.url(forResource: "Shaders", withExtension: "metallib")
-                      ?? URL(fileURLWithPath: "build/BlackholeSimulator.app/Contents/Resources/Shaders/Shaders.metallib")
-        self.library = try! device.makeLibrary(URL: libraryURL)
+        // Load the precompiled shader library from the app bundle
+        let libraryURL = Self.shadersLibraryURL()
+        do {
+            self.library = try device.makeLibrary(URL: libraryURL)
+        } catch {
+            fatalError("Failed to load Metal library at \(libraryURL.path): \(error)")
+        }
 
         super.init()
         self.mtkView.delegate = self
@@ -86,6 +111,18 @@ class BlackholeRenderer: NSObject, MTKViewDelegate {
         // Start FPS counter
         self.lastFPSUpdate = CFAbsoluteTimeGetCurrent()
         self.frameCount = 0
+    }
+
+    // Build a compute pipeline with an actionable error if the function is
+    // missing (e.g. a stale Shaders.metallib after a shader change)
+    private func makePipelineState(named name: String) -> MTLComputePipelineState {
+        guard let fn = library.makeFunction(name: name) else {
+            fatalError("Shader function '\(name)' not found in Shaders.metallib — rebuild with ./direct_build.sh")
+        }
+        guard let ps = try? device.makeComputePipelineState(function: fn) else {
+            fatalError("Failed to create compute pipeline state for '\(name)'")
+        }
+        return ps
     }
 
     // === Metal init (call from viewDidLoad or similar) ===
@@ -119,12 +156,12 @@ class BlackholeRenderer: NSObject, MTKViewDelegate {
                                                     options: .storageModeShared)!
 
         // Create pipeline states
-        self.rayMarchPS = try! device.makeComputePipelineState(function: library.makeFunction(name: "ray_march")!)
-        self.bloomExtractPS = try! device.makeComputePipelineState(function: library.makeFunction(name: "bloom_extract")!)
-        self.bloomBlurPS = try! device.makeComputePipelineState(function: library.makeFunction(name: "gaussian_blur")!)
-        self.bloomCombinePS = try! device.makeComputePipelineState(function: library.makeFunction(name: "bloom_combine")!)
-        self.diskDetailPS = try! device.makeComputePipelineState(function: library.makeFunction(name: "disk_detail")!)
-        self.starfieldLensPS = try! device.makeComputePipelineState(function: library.makeFunction(name: "starfield_lens")!)
+        self.rayMarchPS = makePipelineState(named: "ray_march")
+        self.bloomExtractPS = makePipelineState(named: "bloom_extract")
+        self.bloomBlurPS = makePipelineState(named: "gaussian_blur")
+        self.bloomCombinePS = makePipelineState(named: "bloom_combine")
+        self.diskDetailPS = makePipelineState(named: "disk_detail")
+        self.starfieldLensPS = makePipelineState(named: "starfield_lens")
 
         // Create blit render pipeline (fullscreen quad → passthrough fragment)
         // MTLBlitCommandEncoder is used instead of render pipeline blit
