@@ -4,6 +4,10 @@ A real-time general-relativistic black hole renderer built entirely on Apple Met
 
 ## Screenshots
 
+| Near edge-on view | Tilted view |
+|:---:|:---:|
+| ![Black hole with lensed accretion disk, near edge-on view](images/img1.png) | ![Black hole with accretion disk, tilted view](images/img2.png) |
+
 When the app launches successfully you should see:
 - A **dark central disk** (the shadow / photon sphere)
 - A **bright glowing ring** of hot gas (the accretion disk)
@@ -55,18 +59,8 @@ or simply:
 open build/BlackholeSimulator.app
 ```
 
-The window title shows the live FPS. To quit, press **Q** / **Escape** in the app, or run `killall BlackholeSimulator`.
-
-## Controls
-
-| Key | Action |
-|---|---|
-| **Mouse drag** | Orbit camera around black hole |
-| **B** | Toggle bloom post-processing |
-| **D** | Toggle accretion disk visibility |
-| **M** | Toggle black hole mass (10 solar masses ↔ 1 billion solar masses) |
-| **+/−** | Adjust ray-march step count (affects image quality) |
-| **Escape / Q** | Quit |
+While running, **drag the mouse** to orbit the camera around the black hole.
+The window title shows the live FPS. To stop the app, run `killall BlackholeSimulator` or close the window.
 
 ## What It Simulates — The Physics
 
@@ -209,7 +203,7 @@ For each frame:
 | disk_r_in | 3.0 * rs | Inner disk radius (ISCO for Schwarzschild ≈ 3 rs) |
 | disk_r_out | 15.0 * rs | Outer disk radius |
 | camera position | (0, 4, -22) | Angled view above and behind |
-| step count | 512 | Ray marching iterations (adjustable with +/-) |
+| step count | 512 | Ray marching iterations |
 | escape radius | 200.0 | Max ray distance before starfield sampling |
 | absorption radius | 0.9 * rs | Below photon sphere — ray captured |
 
